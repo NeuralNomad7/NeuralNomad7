@@ -28,10 +28,6 @@ reference systems for hard problems in agentic robotics: a fail-closed safety ga
 recovery-aware mission scoring, contradiction-aware world memory and lease-based fleet
 coordination. Standard library only, CI on Python 3.11–3.13.
 
-**[vision-tracker](https://github.com/NeuralNomad7/vision-tracker)**: real-time perception
-with three swappable backends (HSV, YOLOv8, ArUco 6-DoF pose), Kalman tracking and serial
-output to a robot controller.
-
 #### 📋 Program leadership: how I run technical work
 
 The projects above follow the same delivery pattern I use with teams:
