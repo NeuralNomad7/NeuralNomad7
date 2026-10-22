@@ -1,54 +1,53 @@
-### Hi, I'm Vivan 👋
+## Vivan Amin
 
-I lead forward deployed engineering for **physical AI**: taking robotics and agentic AI
-from research into systems that run with customers. Before that I ran research
-incubations in embodied AI (including release go/no-go for a robotics foundation model),
-and built autonomy, space and security products across aerospace and defense.
+I lead forward deployed engineering for **physical AI**: taking robotics and agentic AI from
+research into systems that run with customers. Before that I ran embodied-AI research
+incubations, including release go/no-go for a robotics foundation model, and built autonomy,
+space and security products across aerospace and defense.
 
-This GitHub is where I build things myself, on my own time. I care about the same questions
-here as at work: **can we prove it works, can it fail safely, and can a team ship it?**
+This GitHub is where I build on my own time. The question behind every repo is the same:
+**can we prove it works, can it fail safely, and can a team ship it?**
 
----
+### The thesis
 
-#### 🔬 Research: measured, not asserted
+Robots that reason need an operating layer between the model and the motors: something
+that bounds what a model may do, measures recovery and not just success, and remembers
+what changed in the world. Each project below works on one piece of that layer.
 
-**[physical-ai-learning-lab](https://github.com/NeuralNomad7/physical-ai-learning-lab)**: Can a
-robot arm learn to push a block when its mass and friction are hidden? MuJoCo + Franka Panda,
-a pre-written plan with phase gates, sealed held-out splits, a baseline before any learner,
-and 284 tests. Every number in the README is backed by evidence in the repo.
+```mermaid
+flowchart LR
+    M["Model proposes<br/>(planner, VLA, LLM)"] --> G["Guardian<br/>bounded authority"]
+    G -->|allowed| R["Robot / simulator<br/>MuJoCo Franka Panda"]
+    R --> W["World memory<br/>provenance and decay"]
+    W --> M
+    E["Evaluation<br/>gates, sealed splits, recovery"] -.-> R
+```
 
-**[satellite-change-detection](https://github.com/NeuralNomad7/satellite-change-detection)**:
-Siamese U-Net for land-cover change from Sentinel-2 imagery: AOI-aware scene selection,
-cloud-mask-aware inference, ONNX export and a FastAPI/Streamlit serving stack.
+### Projects
 
-#### 🛠️ Engineering: agentic systems that fail closed
+| Project | What it shows | Status |
+|---|---|---|
+| [**physical-ai-learning-lab**](https://github.com/NeuralNomad7/physical-ai-learning-lab) | Research program: can a robot arm learn to push under hidden mass and friction? Pre-registered gates, sealed held-out splits, 284 tests | Phases 1–3 of 7 done · [roadmap](https://github.com/NeuralNomad7/physical-ai-learning-lab/milestones) |
+| [**agentic-robotics-lab**](https://github.com/NeuralNomad7/agentic-robotics-lab) | Fail-closed safety gateway, recovery-aware scoring, contradiction-aware memory, lease-based fleet coordination | v0.2.0 · next: [Guardian in the loop](https://github.com/NeuralNomad7/agentic-robotics-lab/milestones) |
+| [**satellite-change-detection**](https://github.com/NeuralNomad7/satellite-change-detection) | Siamese U-Net on Sentinel-2: AOI-aware ingestion, cloud-aware inference, ONNX + FastAPI serving | v1.4.0 · benchmark run [planned](https://github.com/NeuralNomad7/satellite-change-detection/issues/28) |
+| [**ml-foundations**](https://github.com/NeuralNomad7/ml-foundations) | Tabular ML studies written up with their evaluation caveats | Complete |
 
-**[agentic-robotics-lab](https://github.com/NeuralNomad7/agentic-robotics-lab)**: four small
-reference systems for hard problems in agentic robotics: a fail-closed safety gateway,
-recovery-aware mission scoring, contradiction-aware world memory and lease-based fleet
-coordination. Standard library only, CI on Python 3.11–3.13.
+### How I run technical work
 
-#### 📋 Program leadership: how I run technical work
-
-The projects above follow the same delivery pattern I use with teams:
-
-- **Write the claim first.** Each project states what it will prove and what it won't.
-- **Gate every phase.** Acceptance criteria are set before the build, and evidence is
-  saved when a gate passes ([example](https://github.com/NeuralNomad7/physical-ai-learning-lab/blob/main/docs/PROGRESS.md)).
-- **Log decisions.** Trade-offs are written down with their reasons
+- **Claim first.** Each project says what it will prove and, just as clearly, what it won't.
+- **Gates before code.** Acceptance criteria are written before the build; evidence is saved
+  when a gate passes ([example](https://github.com/NeuralNomad7/physical-ai-learning-lab/blob/main/docs/PROGRESS.md)).
+- **Decisions on the record.** Trade-offs are logged with their reasons
   ([example](https://github.com/NeuralNomad7/physical-ai-learning-lab/blob/main/docs/DECISIONS.md)).
-- **Report honestly.** Ceilings, caveats and unmeasured results are stated, not hidden.
+- **Honest reporting.** Ceilings, caveats and unmeasured results are stated, not hidden. When the
+  baseline hit 300/300, that became [a decision to make](https://github.com/NeuralNomad7/physical-ai-learning-lab/issues/1), not a headline.
+- **Small, reviewed steps.** Issues → pull requests → CI → tagged releases.
 
-#### 📚 Foundations
+### Toolbox
 
-**[ml-foundations](https://github.com/NeuralNomad7/ml-foundations)**: classic tabular ML
-studies (classification and regression) with notes on evaluation pitfalls.
+Python · PyTorch · MuJoCo · scikit-learn · FastAPI · ONNX · GitHub Actions ·
+Azure · LLM/VLA evaluation · sim-to-real · edge inference
 
----
-
-**Focus areas:** physical AI · VLA/LLM evaluation · agentic systems · robot safety ·
-sim-to-real · edge AI
-
-**Elsewhere:** [LinkedIn](https://www.linkedin.com/in/vivan-amin/)
+[LinkedIn](https://www.linkedin.com/in/vivan-amin/)
 
 <sub>Personal projects, built on my own time. Views are my own and don't represent my employer.</sub>
